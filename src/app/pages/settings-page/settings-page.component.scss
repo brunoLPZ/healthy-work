@@ -1,7 +1,9 @@
 .form-container {
   height: 100%;
+  font-size: 1.6rem;
   form {
-    width: 35rem;
+    min-width: 30rem;
+    width: 70%;
     padding: 2rem;
     padding-top: 0;
     border-radius: 1rem;
