@@ -36,15 +36,26 @@
     </div>
   </div>
   <app-timer
+    class="tutorial-timer"
     [time]="workTime"
     [action]="workTimerAction"
     (timeEvent)="handleTimeEvent($event)"
   ></app-timer>
   <div fxLayout="row">
-    <button mat-button color="primary" (click)="toggleTimer()">
+    <button
+      class="tutorial-start-stop-btn"
+      mat-button
+      color="primary"
+      (click)="toggleTimer()"
+    >
       {{ workTimerAction === "start" ? "STOP" : "START" }}
     </button>
-    <button mat-button color="accent" class="skip-btn" (click)="nextMode()">
+    <button
+      mat-button
+      color="accent"
+      class="tutorial-skip-btn skip-btn"
+      (click)="nextMode()"
+    >
       TAKE A BREAK
     </button>
   </div>
@@ -160,15 +171,26 @@
     </g>
   </svg>
   <app-timer
+    class="tutorial-timer"
     [time]="breakTime"
     [action]="breakTimerAction"
     (timeEvent)="handleTimeEvent($event)"
   ></app-timer>
   <div fxLayout="row">
-    <button mat-button color="primary" (click)="toggleTimer()">
+    <button
+      class="tutorial-start-stop-btn"
+      mat-button
+      color="primary"
+      (click)="toggleTimer()"
+    >
       {{ breakTimerAction === "start" ? "STOP" : "START" }}
     </button>
-    <button mat-button color="accent" class="skip-btn" (click)="nextMode()">
+    <button
+      mat-button
+      color="accent"
+      class="tutorial-skip-btn skip-btn"
+      (click)="nextMode()"
+    >
       SKIP BREAK
     </button>
   </div>

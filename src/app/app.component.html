@@ -1,5 +1,20 @@
-<mat-icon class="floating-btn top-left" [routerLink]="['/']">home</mat-icon>
-<mat-icon class="floating-btn top-right" [routerLink]="['/', 'settings']"
+<mat-icon
+  id="tutorial-home-btn"
+  class="floating-btn top-left"
+  [routerLink]="['/']"
+  >home</mat-icon
+>
+<mat-icon
+  id="tutorial-help-btn"
+  class="floating-btn top-right"
+  (click)="onStartTutorial()"
+  style="right: 5rem"
+  >help</mat-icon
+>
+<mat-icon
+  id="tutorial-settings-btn"
+  class="floating-btn top-right"
+  [routerLink]="['/', 'settings']"
   >settings</mat-icon
 >
 <router-outlet></router-outlet>

@@ -107,3 +107,62 @@ background: linear-gradient(45deg, rgba(65,97,78,1) 8%, rgba(187,156,61,1) 92%);
     right: 1rem;
   }
 }
+
+.tutorial-tooltip {
+  background-color: #645c52 !important;
+  color: #f5f5f5;
+  .introjs-tooltip-header {
+    padding-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .introjs-tooltiptext {
+    padding-top: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0;
+  }
+  .introjs-skipbutton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #f5f5f5;
+    &:hover {
+      color: #f5f5f5;
+    }
+  }
+  .introjs-tooltipbuttons {
+    border-top: none;
+    .introjs-button {
+      color: #f5f5f5;
+      text-shadow: none;
+      background: transparent;
+      font-size: 1.6rem;
+      border: none;
+      &:hover {
+        border: none;
+      }
+      &:focus {
+        box-shadow: none;
+        border: none;
+      }
+      &:active {
+        border-color: transparent;
+      }
+      &.introjs-disabled {
+        display: none;
+      }
+    }
+  }
+  .introjs-arrow {
+    &.top {
+      border-bottom-color: #645c52;
+    }
+    &.top-right {
+      border-bottom-color: #645c52;
+    }
+    &.bottom {
+      border-top-color: #645c52;
+    }
+  }
+}
