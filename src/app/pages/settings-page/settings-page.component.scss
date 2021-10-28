@@ -1,0 +1,36 @@
+.form-container {
+  height: 100%;
+  form {
+    width: 35rem;
+    padding: 2rem;
+    padding-top: 0;
+    border-radius: 1rem;
+    background-color: rgba($color: #cecece, $alpha: 0.2);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    .form-error-box {
+      padding: 1rem 2rem;
+      background-color: rgba($color: #d81919, $alpha: 0.2);
+      font-size: 1.6rem;
+      font-weight: 700;
+      width: 100%;
+      opacity: 0;
+      &.show-error {
+        animation: fade-in;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+      }
+    }
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

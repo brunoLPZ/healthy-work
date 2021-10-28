@@ -1,0 +1,175 @@
+<div
+  *ngIf="mode === 'work'"
+  class="work-container"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="3rem"
+>
+  <h1>WORK HARD</h1>
+  <div fxLayout="row" class="work-icon">
+    <svg
+      class="work-monitor"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 20"
+    >
+      <path
+        fill="#97c1ff"
+        d="M26,29H24.81L22,15.79A1,1,0,0,0,21,15H11a1,1,0,0,0-1,.79L7.19,29H6a1,1,0,0,0,0,2H26a1,1,0,0,0,0-2ZM9.24,29l2.57-12h8.38l2.57,12Z"
+      />
+      <rect width="30" height="22" x="1" y="1" fill="#eef5fd" rx="3" ry="3" />
+      <path
+        fill="#82bce4"
+        d="M26,29H24.81l-1.28-6L22,15.79A1,1,0,0,0,21,15H16v2h4.19l1.29,6,1.28,6H16v2H26a1,1,0,0,0,0-2Z"
+      />
+      <path fill="#d7e2f2" d="M31,4V20a3,3,0,0,1-3,3H16V1H28A3,3,0,0,1,31,4Z" />
+    </svg>
+    <div
+      fxLayout="row"
+      fxLayoutGap="0.4rem"
+      fxLayoutAlign="start end"
+      class="bar-graph"
+    >
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+      <div class="circle"></div>
+    </div>
+  </div>
+  <app-timer
+    [time]="workTime"
+    [action]="workTimerAction"
+    (timeEvent)="handleTimeEvent($event)"
+  ></app-timer>
+  <div fxLayout="row">
+    <button mat-button color="primary" (click)="toggleTimer()">
+      {{ workTimerAction === "start" ? "STOP" : "START" }}
+    </button>
+    <button mat-button color="accent" class="skip-btn" (click)="nextMode()">
+      TAKE A BREAK
+    </button>
+  </div>
+  <iframe
+    #workVideo
+    class="video-frame"
+    [src]="srcVideo | safe"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  ></iframe>
+</div>
+<div
+  *ngIf="mode === 'break'"
+  class="break-container"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="3rem"
+>
+  <h1>TIME TO TAKE A BREAK</h1>
+  <div fxLayout="row" class="work-icon"></div>
+  <svg
+    class="break-cup"
+    id="SvgjsSvg1001"
+    width="288"
+    height="288"
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:svgjs="http://svgjs.com/svgjs"
+  >
+    <defs id="SvgjsDefs1002"></defs>
+    <g id="SvgjsG1008" transform="matrix(1,0,0,1,0,0)">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        enable-background="new 0 0 47.5 47.5"
+        viewBox="0 -20 47.5 67.5"
+        width="122"
+        height="182"
+      >
+        <defs>
+          <clipPath id="a" clipPathUnits="userSpaceOnUse">
+            <path
+              d="M 0,38 38,38 38,0 0,0 0,38 Z"
+              fill="#000000"
+              class="color000 svgShape"
+            ></path>
+          </clipPath>
+          <clipPath id="b" clipPathUnits="userSpaceOnUse">
+            <path
+              d="M 0,38 38,38 38,0 0,0 0,38 Z"
+              fill="#000000"
+              class="color000 svgShape"
+            ></path>
+          </clipPath>
+        </defs>
+        <g
+          transform="matrix(1.25 0 0 -1.25 0 47.5)"
+          fill="#000000"
+          class="color000 svgShape"
+        >
+          <g clip-path="url(#a)" fill="#000000" class="color000 svgShape">
+            <path
+              fill="#99aab5"
+              d="m 0,0 c 0,-5.522 -8.059,-10 -18,-10 -9.941,0 -18,4.478 -18,10 0,5.522 8.059,10 18,10 C -8.059,10 0,5.522 0,0"
+              transform="translate(37 11)"
+              class="color99aab5 svgShape"
+            ></path>
+            <path
+              fill="#ccd6dd"
+              d="m 0,0 c 0,-5.522 -8.059,-10 -18,-10 -9.941,0 -18,4.478 -18,10 0,5.522 8.059,10 18,10 C -8.059,10 0,5.522 0,0"
+              transform="translate(37 13)"
+              class="colorccd6dd svgShape"
+            ></path>
+            <path
+              fill="#f5f8fa"
+              d="m 0,0 c -14.958,0 -17,15 -17,19 l 34,0 C 17,17 15.042,0 0,0"
+              transform="translate(19 6)"
+              class="colorf5f8fa svgShape"
+            ></path>
+            <path
+              fill="#ccd6dd"
+              d="M 0,0 C -1.357,0.938 -3.103,1.694 -5.121,2.25 -3.246,2.826 -0.57,2.559 0,0 M 2.503,-2.692 C 4.945,7.43 -7.278,5.014 -9.701,3.106 c -1.34,0.149 -2.736,0.234 -4.181,0.234 -9.389,0 -17,-3.228 -17,-8.444 0,-5.216 7.611,-9.444 17,-9.444 9.389,0 17,4.228 17,9.444 0,0.862 -0.225,1.664 -0.615,2.412"
+              transform="translate(32.882 30.048)"
+              class="colorccd6dd svgShape"
+            ></path>
+          </g>
+          <g clip-path="url(#b)" fill="#000000" class="color000 svgShape">
+            <path
+              fill="#8a4b38"
+              d="m 0,0 c 0,-3.866 -6.716,-7 -15,-7 -8.284,0 -15,3.134 -15,7 0,3.866 6.716,7 15,7 C -6.716,7 0,3.866 0,0"
+              transform="translate(34 24)"
+              class="color8a4b38 svgShape"
+            ></path>
+          </g>
+          <svg class="coffee-wave1">
+            <path
+              fill="#d99e82"
+              d="m 0,0 c -0.256,0 -0.512,0.098 -0.707,0.293 -2.337,2.337 -2.376,4.885 -0.125,8.262 0.739,1.109 0.9,2.245 0.478,3.377 -0.461,1.235 -1.438,1.996 -1.731,2.076 -0.553,0 -0.958,0.444 -0.958,0.996 C -3.043,15.557 -2.552,16 -2,16 -1.003,16 0.395,14.847 1.183,13.375 2.217,11.442 2.093,9.336 0.832,7.445 -1.129,4.503 -0.699,3.113 0.707,1.707 1.098,1.316 1.098,0.684 0.707,0.293 0.512,0.098 0.256,0 0,0"
+              transform="translate(21 20)"
+              class="colord99e82 svgShape"
+            ></path>
+          </svg>
+          <svg class="coffee-wave2">
+            <path
+              fill="#d99e82"
+              d="m 0,0 c -0.256,0 -0.512,0.098 -0.707,0.293 -2.337,2.337 -2.376,4.885 -0.125,8.262 0.727,1.091 0.894,2.082 0.494,2.947 -0.444,0.961 -1.431,1.469 -1.684,1.499 -0.552,0 -0.989,0.447 -0.989,0.999 0,0.553 0.459,1 1.011,1 0.997,0 2.584,-0.974 3.36,-2.423 C 1.841,11.678 2.413,9.816 0.832,7.445 -1.129,4.503 -0.699,3.113 0.707,1.707 1.098,1.316 1.098,0.684 0.707,0.293 0.512,0.098 0.256,0 0,0"
+              transform="translate(15 22)"
+              class="colord99e82 svgShape"
+            ></path>
+          </svg>
+        </g>
+      </svg>
+    </g>
+  </svg>
+  <app-timer
+    [time]="breakTime"
+    [action]="breakTimerAction"
+    (timeEvent)="handleTimeEvent($event)"
+  ></app-timer>
+  <div fxLayout="row">
+    <button mat-button color="primary" (click)="toggleTimer()">
+      {{ breakTimerAction === "start" ? "STOP" : "START" }}
+    </button>
+    <button mat-button color="accent" class="skip-btn" (click)="nextMode()">
+      SKIP BREAK
+    </button>
+  </div>
+</div>

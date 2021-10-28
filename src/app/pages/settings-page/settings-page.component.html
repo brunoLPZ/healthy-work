@@ -1,0 +1,38 @@
+<div class="form-container" fxLayout="column" fxLayoutAlign="center center">
+  <form
+    [formGroup]="settingsForm"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="1rem"
+  >
+    <div class="form-error-box" [class.show-error]="settingsForm.invalid">
+      INVALID SETTINGS PROVIDED
+    </div>
+    <mat-form-field appearance="legacy" floatLabel="always">
+      <mat-label>Time for work session</mat-label>
+      <input matInput formControlName="workTime" />
+      <mat-icon matSuffix>timer</mat-icon>
+      <mat-hint>Min. 1 - Max. 60</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="legacy" floatLabel="always">
+      <mat-label>Time for break session</mat-label>
+      <input matInput formControlName="breakTime" />
+      <mat-icon matSuffix>timer</mat-icon>
+      <mat-hint>Min. 1 - Max. 30</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="legacy" floatLabel="always">
+      <mat-label>Youtube video URL</mat-label>
+      <input matInput formControlName="youtubeId" />
+      <mat-icon matSuffix>smart_display</mat-icon>
+      <mat-hint>Format: https://www.youtube.com/watch?v=[VIDEO_ID]</mat-hint>
+    </mat-form-field>
+    <button
+      [disabled]="settingsForm.invalid"
+      mat-button
+      color="primary"
+      (click)="saveSettings()"
+    >
+      Save
+    </button>
+  </form>
+</div>
