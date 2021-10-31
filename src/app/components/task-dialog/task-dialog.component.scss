@@ -1,0 +1,17 @@
+.dialog-container {
+  width: 100%;
+  form {
+    width: 100%;
+    mat-form-field {
+      width: 100%;
+      font-size: 1.6rem;
+    }
+    button {
+      font-size: 2rem;
+      font-family: "Unica One", cursive;
+      &.red-btn {
+        color: #814949;
+      }
+    }
+  }
+}

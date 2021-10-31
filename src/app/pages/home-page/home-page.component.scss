@@ -23,13 +23,13 @@
 
 @keyframes zoom-in-out {
   0% {
-    scale: 0.8;
+    transform: scale(0.8);
   }
   50% {
-    scale: 1;
+    transform: scale(1);
   }
   100% {
-    scale: 0.8;
+    transform: scale(0.8);
   }
 }
 

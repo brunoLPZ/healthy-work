@@ -15,6 +15,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SafePipe } from './pipes/safe.pipe';
+import { WorkPanelComponent } from './components/work-panel/work-panel.component';
+import { BreakPanelComponent } from './components/break-panel/break-panel.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +30,10 @@ import { SafePipe } from './pipes/safe.pipe';
     WorkPageComponent,
     SettingsPageComponent,
     SafePipe,
+    WorkPanelComponent,
+    BreakPanelComponent,
+    TaskListComponent,
+    TaskDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +45,8 @@ import { SafePipe } from './pipes/safe.pipe';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

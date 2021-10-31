@@ -1,0 +1,42 @@
+<div class="dialog-container" fxLayout="column" fxLayoutAlign="center center">
+  <form
+    [formGroup]="taskFormGroup"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="2rem"
+  >
+    <div
+      class="form-error-box"
+      [class.show-error]="taskFormGroup.invalid && taskFormGroup.touched"
+    >
+      INVALID TASK DATA PROVIDED
+    </div>
+    <mat-form-field appearance="legacy" floatLabel="always" required>
+      <mat-label>Task name</mat-label>
+      <input matInput formControlName="name" />
+      <mat-hint>Max Length 80</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="legacy" floatLabel="always">
+      <mat-label>Task status</mat-label>
+      <mat-select formControlName="status" required>
+        <mat-option value="pending"> Pending </mat-option>
+        <mat-option value="blocked"> Blocked </mat-option>
+        <mat-option value="doubt"> Doubt </mat-option>
+        <mat-option value="done"> Done </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div fxLayout="row">
+      <button mat-button color="primary" class="red-btn" (click)="close()">
+        CANCEL
+      </button>
+      <button
+        [disabled]="taskFormGroup.invalid"
+        mat-button
+        color="primary"
+        (click)="save()"
+      >
+        SAVE
+      </button>
+    </div>
+  </form>
+</div>

@@ -58,7 +58,7 @@
   .video-frame {
     width: 20rem;
     height: 15rem;
-    position: fixed;
+    position: absolute;
     bottom: 1rem;
     left: 1rem;
     border-radius: 2rem;
@@ -119,58 +119,6 @@
   }
 }
 
-.break-container {
-  height: 100%;
-  h1 {
-    font-size: 4rem;
-    margin: 0 !important;
-  }
-  .break-cup {
-    width: 12rem;
-    height: 18rem;
-    .coffee-wave1 {
-      animation: wave 2s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      animation-fill-mode: forwards;
-    }
-    .coffee-wave2 {
-      animation: wave 2s;
-      animation-delay: 0.4s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      animation-fill-mode: forwards;
-    }
-  }
-  button {
-    font-family: "Unica One", cursive;
-    font-size: 3rem;
-  }
-}
-
-@keyframes wave {
-  0% {
-    transform: translate(0rem, 0rem);
-    opacity: 1;
-  }
-  40% {
-    transform: translate(0rem, 0.5rem);
-    opacity: 0.75;
-  }
-  60% {
-    transform: translate(0rem, 1rem);
-    opacity: 0.5;
-  }
-  60% {
-    transform: translate(0rem, 1.5rem);
-    opacity: 0.25;
-  }
-  100% {
-    transform: translate(0rem, 2rem);
-    opacity: 0;
-  }
-}
-
 @keyframes show-hide-circle {
   0% {
     opacity: 1;
@@ -185,23 +133,4 @@
 
 .skip-btn {
   color: rgb(100, 92, 82);
-}
-
-.task-container {
-  height: 100%;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  background: linear-gradient(
-    180deg,
-    rgba(223, 223, 223, 1) 0%,
-    rgba(205, 205, 205, 1) 100%
-  );
-  /*background: linear-gradient(
-    180deg,
-    rgba(249, 239, 228, 1) 0%,
-    rgba(230, 212, 192, 1) 100%
-  );*/
 }

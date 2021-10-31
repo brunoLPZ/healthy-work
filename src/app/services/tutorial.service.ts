@@ -73,6 +73,18 @@ const TUTORIAL_WORK_STEPS: introJs.Step[] = [
       'You can skip a work session or a break if you feel that is too much.',
     element: '.tutorial-skip-btn',
   },
+  {
+    title: 'YOUR TASKS',
+    intro:
+      'You can create a maximun of 10 tasks to keep track of your working progress. You can set a name and a status to the task. It is possible to create, edit and delete tasks at any time',
+    element: '#tutorial-create-task-btn',
+  },
+  {
+    title: 'TASK STATUS',
+    intro:
+      'You can select one of these task status depending on your current progress in the task',
+    element: '#tutorial-task-legend',
+  },
 ];
 
 @Injectable({
@@ -107,7 +119,31 @@ export class TutorialService {
         showProgress: false,
         steps: TUTORIAL_WORK_STEPS,
       });
+
+      this.changeTaskLegendOpacity(true);
+      this.tutorial.onbeforechange(async (targetElement) => {
+        const timer = document
+          .getElementsByClassName('tutorial-timer')
+          ?.item(0) as HTMLElement;
+        if (
+          targetElement.classList.contains('tutorial-start-stop-btn') &&
+          timer.classList.contains('timer-container-fixed')
+        ) {
+          setTimeout(() => {
+            this.tutorial.refresh();
+          }, 500);
+        }
+      });
+      this.tutorial.oncomplete(() => this.changeTaskLegendOpacity(false));
+      this.tutorial.onexit(() => this.changeTaskLegendOpacity(false));
     }
     this.tutorial.start();
+  }
+
+  private changeTaskLegendOpacity(visible: boolean) {
+    const taskLegend = document.getElementById('tutorial-task-legend');
+    if (taskLegend) {
+      taskLegend.style.opacity = visible ? '1' : '0';
+    }
   }
 }

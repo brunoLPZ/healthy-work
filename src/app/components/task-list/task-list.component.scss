@@ -1,0 +1,82 @@
+.task-container {
+  height: 100%;
+  h1 {
+    font-size: 4rem;
+  }
+  .task-header {
+    font-size: 2rem;
+    max-width: 100rem;
+    width: 90%;
+    padding: 1rem;
+    background-color: #f5f5f5;
+  }
+  .task-row {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    max-width: 100rem;
+    width: 90%;
+    padding: 1rem;
+    &:nth-child(2n + 1) {
+      background-color: #645c52;
+      color: #f5f5f5;
+    }
+    &:nth-child(2n) {
+      background-color: #373533;
+      color: #f5f5f5;
+    }
+  }
+  .action {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .check-container {
+    border: solid;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    height: 10rem;
+    width: 12rem;
+    background-color: #f5f5f5;
+    .check-mark {
+      width: 0;
+      animation: draw-check;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+  }
+  .task-icon-legend {
+    opacity: 0;
+    background-color: #645c52;
+    color: #f5f5f5;
+    padding: 1rem;
+    border-radius: 1rem;
+    position: absolute;
+    bottom: calc(-100% + 2rem);
+    .legend-header {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    span {
+      mat-icon {
+        padding-left: 0.3rem;
+      }
+    }
+  }
+  .skip-btn {
+    margin-top: 1rem;
+    font-size: 2.4rem;
+    font-family: "Unica One", cursive;
+    color: rgb(100, 92, 82);
+  }
+}
+
+@keyframes draw-check {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 12rem;
+  }
+}

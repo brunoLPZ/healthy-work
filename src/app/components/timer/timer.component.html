@@ -1,4 +1,8 @@
-<div class="timer-container" fxLayout="row">
+<div
+  [ngClass]="{ 'timer-container': !small, 'timer-container-fixed': small }"
+  class="tutorial-timer"
+  fxLayout="row"
+>
   <div
     class="timer-box"
     [class.animate]="action === 'start' && animateMinuteBox"

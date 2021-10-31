@@ -1,0 +1,68 @@
+<div
+  class="work-container"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="3rem"
+>
+  <h1>WORK HARD</h1>
+  <div fxLayout="row" class="work-icon">
+    <svg
+      class="work-monitor"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 20"
+    >
+      <path
+        fill="#97c1ff"
+        d="M26,29H24.81L22,15.79A1,1,0,0,0,21,15H11a1,1,0,0,0-1,.79L7.19,29H6a1,1,0,0,0,0,2H26a1,1,0,0,0,0-2ZM9.24,29l2.57-12h8.38l2.57,12Z"
+      />
+      <rect width="30" height="22" x="1" y="1" fill="#eef5fd" rx="3" ry="3" />
+      <path
+        fill="#82bce4"
+        d="M26,29H24.81l-1.28-6L22,15.79A1,1,0,0,0,21,15H16v2h4.19l1.29,6,1.28,6H16v2H26a1,1,0,0,0,0-2Z"
+      />
+      <path fill="#d7e2f2" d="M31,4V20a3,3,0,0,1-3,3H16V1H28A3,3,0,0,1,31,4Z" />
+    </svg>
+    <div
+      fxLayout="row"
+      fxLayoutGap="0.4rem"
+      fxLayoutAlign="start end"
+      class="bar-graph"
+    >
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+      <div class="circle"></div>
+    </div>
+  </div>
+  <app-timer
+    [small]="smallTimer"
+    [time]="workTime"
+    [action]="workTimerAction"
+    (timeEvent)="handleTimeEvent($event)"
+  ></app-timer>
+  <div fxLayout="row">
+    <button
+      class="tutorial-start-stop-btn"
+      mat-button
+      color="primary"
+      (click)="toggleTimer()"
+    >
+      {{ workTimerAction === "start" ? "STOP" : "START" }}
+    </button>
+    <button
+      mat-button
+      color="accent"
+      class="tutorial-skip-btn skip-btn"
+      (click)="nextMode()"
+    >
+      TAKE A BREAK
+    </button>
+  </div>
+  <iframe
+    #workVideo
+    class="video-frame"
+    [src]="srcVideo | safe"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  ></iframe>
+</div>

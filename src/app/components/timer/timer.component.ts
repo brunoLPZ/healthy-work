@@ -17,6 +17,7 @@ import { Time } from 'src/app/models/time';
 export class TimerComponent implements OnChanges, OnDestroy {
   @Input() time?: Time;
   @Input() action: 'start' | 'stop' = 'stop';
+  @Input() small: boolean = false;
 
   @Output() readonly timeEvent = new EventEmitter<Time>();
 
@@ -35,7 +36,6 @@ export class TimerComponent implements OnChanges, OnDestroy {
       this.minutes = this.time?.minutes || 0;
       this.seconds = this.time?.seconds || 0;
       if (this.timerInterval) {
-        console.log('Cleaning interval');
         clearInterval(this.timerInterval);
       }
       this.updateTimer();
