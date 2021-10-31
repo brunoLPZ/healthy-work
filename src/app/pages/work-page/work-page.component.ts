@@ -25,18 +25,10 @@ export class WorkPageComponent {
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
     const st = window.pageYOffset || document.documentElement.scrollTop;
-    if (st > this.lastScrollTop) {
+    if (st > 560) {
       this.isSmallTimer = true;
-      window.scrollTo({
-        top: this.tasks?.nativeElement.offsetTop,
-        behavior: 'smooth',
-      });
-    } else {
+    } else if (st < this.lastScrollTop) {
       this.isSmallTimer = false;
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
     }
     this.lastScrollTop = st <= 0 ? 0 : st;
   }
