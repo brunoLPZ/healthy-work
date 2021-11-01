@@ -3,7 +3,7 @@ import { Settings } from '../models/settings';
 
 const LOCAL_STORAGE_SETTINGS = 'healthy-work-settings';
 export const YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/';
-export const YOUTUBE_API_ENABLE = '?enablejsapi=1';
+export const YOUTUBE_API_ENABLE = '?enablejsapi=1&controls=0';
 
 export const DEFAULT_SETTINGS: Settings = {
   workTime: 60,

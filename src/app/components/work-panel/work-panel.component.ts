@@ -27,6 +27,9 @@ export class WorkPanelComponent {
   workTimerAction: 'start' | 'stop' = 'stop';
   workTime: Time;
   srcVideo: string;
+  videoMuted: boolean = false;
+  videoPaused: boolean = true;
+  videoMaximized: boolean = false;
 
   private userSettings: Settings;
 
@@ -54,14 +57,19 @@ export class WorkPanelComponent {
     }
   }
 
-  toggleTimer() {
+  toggleTimer(): void {
     this.workTimerAction = this.workTimerAction === 'stop' ? 'start' : 'stop';
     this.videoAction(
       this.workTimerAction === 'start' ? 'playVideo' : 'pauseVideo'
     );
   }
 
-  nextMode() {
+  toggleMute(): void {
+    this.videoMuted = !this.videoMuted;
+    this.videoAction('setVolume', [this.videoMuted ? 0 : 100]);
+  }
+
+  nextMode(): void {
     this.workTimerAction = 'stop';
     this.workTime = { minutes: this.userSettings.workTime, seconds: 0 };
     this.changeMode.emit(false);
@@ -74,13 +82,25 @@ export class WorkPanelComponent {
     return;
   }
 
-  private videoAction(action: 'playVideo' | 'pauseVideo') {
+  togglePlay(): void {
+    this.videoPaused = !this.videoPaused;
+    this.videoAction(this.videoPaused ? 'pauseVideo' : 'playVideo');
+  }
+
+  toggleMaximize(): void {
+    this.videoMaximized = !this.videoMaximized;
+  }
+
+  private videoAction(
+    action: 'playVideo' | 'pauseVideo' | 'setVolume',
+    args?: any[]
+  ): void {
     if (this.workVideo) {
       this.workVideo.nativeElement.contentWindow.postMessage(
         JSON.stringify({
           event: 'command',
           func: action,
-          args: [],
+          args: args || [],
         }),
         '*'
       );
