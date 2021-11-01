@@ -73,6 +73,7 @@
 }
 
 .video-frame {
+  pointer-events: none;
   width: 20rem;
   height: 15rem;
   position: fixed;
