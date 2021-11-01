@@ -7,12 +7,14 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Settings } from 'src/app/models/settings';
+import { Task } from 'src/app/models/task';
 import { Time } from 'src/app/models/time';
 import {
   SettingsService,
   YOUTUBE_API_ENABLE,
   YOUTUBE_EMBED_URL,
 } from 'src/app/services/settings.service';
+import { TasksService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-work-panel',
@@ -28,13 +30,18 @@ export class WorkPanelComponent {
 
   private userSettings: Settings;
 
-  constructor(private settingsService: SettingsService) {
+  constructor(
+    private settingsService: SettingsService,
+    private taskService: TasksService
+  ) {
     this.userSettings = this.settingsService.getSettings();
     this.workTime = { minutes: this.userSettings.workTime, seconds: 0 };
     this.srcVideo = `${YOUTUBE_EMBED_URL}${this.userSettings.youtubeId}${YOUTUBE_API_ENABLE}`;
   }
 
   @Input() smallTimer: boolean = false;
+  @Input() activeTask?: Task;
+
   @Output() readonly changeMode: EventEmitter<boolean> = new EventEmitter();
 
   handleTimeEvent(time: Time) {
@@ -58,6 +65,13 @@ export class WorkPanelComponent {
     this.workTimerAction = 'stop';
     this.workTime = { minutes: this.userSettings.workTime, seconds: 0 };
     this.changeMode.emit(false);
+  }
+
+  getStatusIcon(): string | undefined {
+    if (this.activeTask) {
+      return this.taskService.getStatusIcon(this.activeTask);
+    }
+    return;
   }
 
   private videoAction(action: 'playVideo' | 'pauseVideo') {

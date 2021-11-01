@@ -1,6 +1,7 @@
 <app-work-panel
   *ngIf="mode === 'work'"
   [smallTimer]="isSmallTimer"
+  [activeTask]="activeTask"
   (changeMode)="nextMode($event)"
 ></app-work-panel>
 <app-break-panel
@@ -9,7 +10,10 @@
   (changeMode)="nextMode($event)"
 ></app-break-panel>
 <div #tasks class="task-container">
-  <app-task-list [tasks]="taskList"></app-task-list>
+  <app-task-list
+    [tasks]="taskList"
+    (activeTask)="onActiveTask($event)"
+  ></app-task-list>
 </div>
 <audio controls #alarm style="display: none">
   <source src="/healthy-work/assets/sounds/alarm.mp3" type="audio/mp3" />

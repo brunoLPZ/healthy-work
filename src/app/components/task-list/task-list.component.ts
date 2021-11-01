@@ -1,7 +1,7 @@
 import { Overlay } from '@angular/cdk/overlay';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Task, TaskStatus } from 'src/app/models/task';
+import { Task } from 'src/app/models/task';
 import { TasksService } from 'src/app/services/task.service';
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 import { v4 as uuidv4 } from 'uuid';
@@ -15,6 +15,7 @@ export class TaskListComponent {
   displayedColumns: string[] = ['id', 'name', 'status'];
 
   @Input() tasks: Task[] = [];
+  @Output() activeTask: EventEmitter<Task> = new EventEmitter();
 
   constructor(
     private dialog: MatDialog,
@@ -23,16 +24,11 @@ export class TaskListComponent {
   ) {}
 
   getTaskStatusIcon(task: Task): string {
-    switch (task.status) {
-      case TaskStatus.PENDING:
-        return 'pending';
-      case TaskStatus.BLOCKED:
-        return 'block';
-      case TaskStatus.DONE:
-        return 'check_circle';
-      default:
-        return 'help_outline';
-    }
+    return this.taskService.getStatusIcon(task);
+  }
+
+  getTaskActiveIcon(task: Task): string {
+    return task.active ? 'star' : 'star_border';
   }
 
   editTask(task: Task): void {
@@ -46,16 +42,25 @@ export class TaskListComponent {
 
     taskDialog.afterClosed().subscribe((result) => {
       if (result) {
-        this.taskService.editTask({
+        const edittedTask = {
           id: task.id,
           ...result,
-        });
+        };
+        this.taskService.editTask(edittedTask);
+        const activeTask = this.taskService.getActiveTask();
+        if (activeTask && task.id === activeTask.id) {
+          this.activeTask.emit(edittedTask);
+        }
         this.tasks = this.taskService.getTasks();
       }
     });
   }
 
   deleteTask(task: Task): void {
+    const activeTask = this.taskService.getActiveTask();
+    if (activeTask && task.id === activeTask.id) {
+      this.activeTask.emit();
+    }
     this.taskService.deleteTask(task.id);
     this.tasks = this.taskService.getTasks();
   }
@@ -78,5 +83,15 @@ export class TaskListComponent {
         this.tasks = this.taskService.getTasks();
       }
     });
+  }
+
+  toggleActive(task: Task): void {
+    this.taskService.toggleActive(task.id, !task.active);
+    if (!task.active) {
+      this.activeTask.emit(task);
+    } else {
+      this.activeTask.emit();
+    }
+    this.tasks = this.taskService.getTasks();
   }
 }

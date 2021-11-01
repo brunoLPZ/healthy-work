@@ -17,9 +17,11 @@ export class WorkPageComponent {
   @ViewChild('alarm', { read: ElementRef }) alarm?: ElementRef;
 
   taskList: Task[];
+  activeTask?: Task;
 
   constructor(taskService: TasksService) {
     this.taskList = taskService.getTasks();
+    this.activeTask = taskService.getActiveTask();
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -31,6 +33,10 @@ export class WorkPageComponent {
       this.isSmallTimer = false;
     }
     this.lastScrollTop = st <= 0 ? 0 : st;
+  }
+
+  onActiveTask(task: Task): void {
+    this.activeTask = task;
   }
 
   nextMode(playAlarm: boolean) {

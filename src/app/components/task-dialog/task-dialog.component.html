@@ -13,7 +13,7 @@
     </div>
     <mat-form-field appearance="legacy" floatLabel="always" required>
       <mat-label>Task name</mat-label>
-      <input matInput formControlName="name" />
+      <input matInput formControlName="name" minlength="1" maxlength="80" />
       <mat-hint>Max Length 80</mat-hint>
     </mat-form-field>
     <mat-form-field appearance="legacy" floatLabel="always">

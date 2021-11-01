@@ -1,4 +1,4 @@
-<div class="task-container" fxLayout="column" fxLayoutAlign="center center">
+<div class="task-container" fxLayout="column" fxLayoutAlign="start center">
   <h1>TODAY'S TASKS</h1>
   <div class="check-container">
     <svg
@@ -29,18 +29,30 @@
     </svg>
   </div>
   <div class="task-header" fxLayout="row" *ngIf="tasks.length">
-    <div fxFlex="80">NAME</div>
-    <div fxFlex="10" style="text-align: center">STATUS</div>
-    <div fxFlex="10" style="text-align: center">ACTIONS</div>
+    <div fxFlex="60">NAME</div>
+    <div fxFlex="15" style="text-align: center">STATUS</div>
+    <div fxFlex="25" style="text-align: center">ACTIONS</div>
   </div>
-  <div *ngFor="let task of tasks" class="task-row" fxLayout="row">
-    <div fxFlex="80">{{ task.name }}</div>
-    <div fxFlex="10" style="text-align: center">
+  <div
+    *ngFor="let task of tasks"
+    class="task-row tutorial-task-table"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+  >
+    <div fxFlex="60" class="tutorial-task-name">{{ task.name }}</div>
+    <div fxFlex="15" class="tutorial-task-status" style="text-align: center">
       <mat-icon>{{ getTaskStatusIcon(task) }}</mat-icon>
     </div>
-    <div fxFlex="10" fxLayoutGap="0.5rem" style="text-align: center">
-      <mat-icon (click)="editTask(task)" class="action">edit</mat-icon>
-      <mat-icon (click)="deleteTask(task)" class="action">delete</mat-icon>
+    <div fxFlex="25" fxLayoutGap="0.5rem" style="text-align: center">
+      <mat-icon (click)="toggleActive(task)" class="action tutorial-task-fav">{{
+        getTaskActiveIcon(task)
+      }}</mat-icon>
+      <mat-icon (click)="editTask(task)" class="action tutorial-task-edit"
+        >edit</mat-icon
+      >
+      <mat-icon (click)="deleteTask(task)" class="action tutorial-task-delete"
+        >delete</mat-icon
+      >
     </div>
   </div>
   <div *ngIf="!tasks.length">

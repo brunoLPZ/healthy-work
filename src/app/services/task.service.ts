@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task } from '../models/task';
+import { Task, TaskStatus } from '../models/task';
 
 const LOCAL_STORAGE_TASKS = 'tasks';
 
@@ -31,10 +31,40 @@ export class TasksService {
   }
 
   getTasks(): Task[] {
-    const localStorageSettings = localStorage.getItem(LOCAL_STORAGE_TASKS);
-    if (localStorageSettings) {
-      return JSON.parse(localStorageSettings);
+    const localStorageTasks = localStorage.getItem(LOCAL_STORAGE_TASKS);
+    if (localStorageTasks) {
+      return JSON.parse(localStorageTasks);
     }
     return [];
+  }
+
+  toggleActive(id: string, isActive: boolean) {
+    const tasks = this.getTasks();
+    tasks.forEach((t) => {
+      if (t.id === id) {
+        t.active = isActive;
+      } else if (isActive) {
+        t.active = false;
+      }
+    });
+    localStorage.setItem(LOCAL_STORAGE_TASKS, JSON.stringify(tasks));
+  }
+
+  getActiveTask(): Task | undefined {
+    const tasks = this.getTasks();
+    return tasks.find((t) => t.active);
+  }
+
+  getStatusIcon(task: Task): string {
+    switch (task.status) {
+      case TaskStatus.PENDING:
+        return 'pending';
+      case TaskStatus.BLOCKED:
+        return 'block';
+      case TaskStatus.DONE:
+        return 'check_circle';
+      default:
+        return 'help_outline';
+    }
   }
 }

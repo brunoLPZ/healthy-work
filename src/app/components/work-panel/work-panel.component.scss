@@ -1,7 +1,22 @@
 .work-container {
   height: 100%;
+  padding-top: 5rem;
   h1 {
     font-size: 4rem;
+  }
+  .active-task {
+    font-size: 2rem;
+    text-transform: uppercase;
+    p {
+      margin: 0;
+    }
+    animation: pulse-brown;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    background-color: rgb(100, 92, 82);
+    color: #f5f5f5;
+    padding: 0.2rem 1rem;
+    border-radius: 2rem;
   }
   .work-icon {
     margin-left: 7.5rem;
@@ -58,7 +73,7 @@
   .video-frame {
     width: 20rem;
     height: 15rem;
-    position: absolute;
+    position: fixed;
     bottom: 1rem;
     left: 1rem;
     border-radius: 2rem;
@@ -118,6 +133,9 @@
     height: 5rem;
   }
 }
+.skip-btn {
+  color: rgb(100, 92, 82);
+}
 
 @keyframes show-hide-circle {
   0% {
@@ -131,6 +149,23 @@
   }
 }
 
-.skip-btn {
-  color: rgb(100, 92, 82);
+@keyframes pulse-brown {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(100, 92, 82, 0.7);
+  }
+
+  40% {
+    transform: scale(1);
+    box-shadow: 0 0 0 1rem rgba(100, 92, 82, 0);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 1.5rem rgba(100, 92, 82, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(100, 92, 82, 0);
+  }
 }

@@ -1,10 +1,22 @@
 <div
   class="work-container"
   fxLayout="column"
-  fxLayoutAlign="center center"
+  fxLayoutAlign="start center"
   fxLayoutGap="3rem"
 >
   <h1>WORK HARD</h1>
+  <div
+    class="active-task"
+    *ngIf="activeTask"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutGap="1rem"
+  >
+    <p>
+      {{ activeTask.name }}
+    </p>
+    <mat-icon>{{ getStatusIcon() }}</mat-icon>
+  </div>
   <div fxLayout="row" class="work-icon">
     <svg
       class="work-monitor"
@@ -60,6 +72,7 @@
   </div>
   <iframe
     #workVideo
+    id="tutorial-video"
     class="video-frame"
     [src]="srcVideo | safe"
     frameborder="0"

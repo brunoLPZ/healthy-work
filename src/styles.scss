@@ -173,6 +173,12 @@ background: linear-gradient(45deg, rgba(65,97,78,1) 8%, rgba(187,156,61,1) 92%);
     &.bottom {
       border-top-color: #645c52;
     }
+    &.bottom-middle {
+      border-top-color: #645c52;
+    }
+    &.right {
+      border-left-color: #645c52;
+    }
   }
 }
 
