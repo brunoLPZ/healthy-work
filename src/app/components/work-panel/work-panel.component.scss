@@ -73,7 +73,6 @@
 }
 
 .video-frame {
-  pointer-events: none;
   width: 20rem;
   height: 15rem;
   position: fixed;
@@ -90,6 +89,9 @@
     height: 40rem;
     left: 10%;
     bottom: calc(50% - 20rem);
+  }
+  &.disabled {
+    pointer-events: none;
   }
 }
 

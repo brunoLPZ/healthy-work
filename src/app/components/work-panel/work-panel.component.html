@@ -71,10 +71,11 @@
     </button>
   </div>
 </div>
+<div class="video-frame" [class.maximized]="videoMaximized"></div>
 <iframe
   #workVideo
   id="tutorial-video"
-  class="video-frame"
+  class="video-frame disabled"
   [class.maximized]="videoMaximized"
   [src]="srcVideo | safe"
   frameborder="0"

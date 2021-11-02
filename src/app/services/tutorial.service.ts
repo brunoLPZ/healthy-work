@@ -173,6 +173,7 @@ export class TutorialService {
           ?.item(0) as HTMLElement;
         if (
           targetElement.classList.contains('tutorial-start-stop-btn') &&
+          timer &&
           timer.classList.contains('timer-container-fixed')
         ) {
           setTimeout(() => {
