@@ -15,10 +15,10 @@
 .alarm-clock {
   background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
-  width: 25rem;
-  height: 25rem;
-  top: calc(50% - 12.5rem);
-  left: calc(50% - 12.5rem);
+  width: 10rem;
+  height: 10rem;
+  top: calc(50% - 5rem);
+  left: calc(50% - 5rem);
   box-shadow: 0 0 0 999em rgba(0, 0, 0, 0.8);
   display: none;
   &.show {
