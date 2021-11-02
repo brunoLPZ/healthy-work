@@ -59,7 +59,7 @@ export class WorkPanelComponent {
 
   toggleTimer(): void {
     this.workTimerAction = this.workTimerAction === 'stop' ? 'start' : 'stop';
-    this.videoPaused = !this.videoPaused;
+    this.videoPaused = this.workTimerAction === 'stop';
     this.videoAction(
       this.workTimerAction === 'start' ? 'playVideo' : 'pauseVideo'
     );
