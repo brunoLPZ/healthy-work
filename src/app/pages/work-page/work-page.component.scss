@@ -11,3 +11,31 @@
     rgba(205, 205, 205, 1) 100%
   );
 }
+
+.alarm-clock {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  width: 25rem;
+  height: 25rem;
+  top: calc(50% - 12.5rem);
+  left: calc(50% - 12.5rem);
+  box-shadow: 0 0 0 999em rgba(0, 0, 0, 0.8);
+  display: none;
+  &.show {
+    display: block;
+    animation: balance-clock 1s;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes balance-clock {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

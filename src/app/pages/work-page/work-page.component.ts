@@ -12,6 +12,7 @@ export class WorkPageComponent {
 
   lastScrollTop = 0;
   isSmallTimer: boolean = false;
+  showClock: boolean = false;
 
   @ViewChild('tasks', { read: ElementRef }) tasks?: ElementRef;
   @ViewChild('alarm', { read: ElementRef }) alarm?: ElementRef;
@@ -42,6 +43,8 @@ export class WorkPageComponent {
   nextMode(playAlarm: boolean) {
     this.mode = this.mode === 'work' ? 'break' : 'work';
     if (playAlarm) {
+      this.showClock = true;
+      setTimeout(() => (this.showClock = false), 4000);
       this.playAlarm();
     }
   }
