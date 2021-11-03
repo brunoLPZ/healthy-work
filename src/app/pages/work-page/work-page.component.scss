@@ -39,3 +39,14 @@
     transform: scale(1);
   }
 }
+
+.work-session-count {
+  position: absolute;
+  top: 6rem;
+  left: 1rem;
+  border-radius: 3rem;
+  background-color: rgb(100, 92, 82);
+  color: #f5f5f5;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+}

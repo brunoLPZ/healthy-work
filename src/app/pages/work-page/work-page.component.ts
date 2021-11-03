@@ -11,6 +11,7 @@ export class WorkPageComponent {
   mode: 'work' | 'break' = 'work';
 
   lastScrollTop = 0;
+  completedSessions = 0;
   isSmallTimer: boolean = false;
   showClock: boolean = false;
 
@@ -43,6 +44,9 @@ export class WorkPageComponent {
   nextMode(playAlarm: boolean) {
     this.mode = this.mode === 'work' ? 'break' : 'work';
     if (playAlarm) {
+      if (this.mode === 'break') {
+        this.completedSessions += 1;
+      }
       this.showClock = true;
       setTimeout(() => (this.showClock = false), 4000);
       this.playAlarm();

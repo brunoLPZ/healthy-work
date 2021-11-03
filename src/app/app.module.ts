@@ -21,6 +21,7 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { TaskDialogComponent } from './components/task-dialog/task-dialog.compon
     BreakPanelComponent,
     TaskListComponent,
     TaskDialogComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,

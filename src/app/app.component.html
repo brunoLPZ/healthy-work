@@ -1,7 +1,7 @@
 <mat-icon
   id="tutorial-home-btn"
   class="floating-btn top-left"
-  [routerLink]="['/']"
+  (click)="goToHome()"
   >home</mat-icon
 >
 <mat-icon
@@ -14,7 +14,7 @@
 <mat-icon
   id="tutorial-settings-btn"
   class="floating-btn top-right"
-  [routerLink]="['/', 'settings']"
+  (click)="goToSettings()"
   >settings</mat-icon
 >
 <router-outlet></router-outlet>

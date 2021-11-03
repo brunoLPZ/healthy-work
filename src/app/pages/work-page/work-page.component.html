@@ -9,6 +9,7 @@
   [smallTimer]="isSmallTimer"
   (changeMode)="nextMode($event)"
 ></app-break-panel>
+<div class="work-session-count">SESSIONS: {{ completedSessions }}</div>
 <div #tasks class="task-container">
   <app-task-list
     [tasks]="taskList"
