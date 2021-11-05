@@ -22,11 +22,12 @@
     >restart_alt</mat-icon
   >
 </div>
-<div #tasks class="task-container">
+<div class="task-container">
   <app-task-list
     [tasks]="taskList"
     (activeTask)="onActiveTask($event)"
   ></app-task-list>
+  <div #taskEnd></div>
 </div>
 <audio controls #alarm style="display: none">
   <source src="/healthy-work/assets/sounds/alarm.mp3" type="audio/mp3" />

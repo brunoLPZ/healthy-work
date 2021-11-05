@@ -17,7 +17,7 @@ export class WorkPageComponent {
   showClock: boolean = false;
   sessionRestartFlip: boolean = false;
 
-  @ViewChild('tasks', { read: ElementRef }) tasks?: ElementRef;
+  @ViewChild('taskEnd', { read: ElementRef }) taskEnd?: ElementRef;
   @ViewChild('alarm', { read: ElementRef }) alarm?: ElementRef;
 
   taskList: Task[];
@@ -33,14 +33,13 @@ export class WorkPageComponent {
   }
 
   @HostListener('window:scroll', ['$event'])
-  onScroll(event: any) {
-    const st = window.pageYOffset || document.documentElement.scrollTop;
-    if (st > 560) {
-      this.isSmallTimer = true;
-    } else if (st < this.lastScrollTop) {
-      this.isSmallTimer = false;
+  isScrolledIntoView() {
+    if (this.taskEnd) {
+      const rect = this.taskEnd.nativeElement.getBoundingClientRect();
+      const topShown = rect.top >= 0;
+      const bottomShown = rect.bottom - 300 <= window.innerHeight;
+      this.isSmallTimer = topShown && bottomShown;
     }
-    this.lastScrollTop = st <= 0 ? 0 : st;
   }
 
   onActiveTask(task: Task): void {

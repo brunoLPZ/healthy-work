@@ -1,6 +1,13 @@
 .work-container {
   height: 100%;
+  min-height: 54rem;
   padding-top: 7rem;
+  background: linear-gradient(
+    0deg,
+    rgba(223, 223, 223, 1) 0%,
+    rgba(237, 237, 237, 1) 28%,
+    rgba(255, 255, 255, 1) 68%
+  );
   h1 {
     font-size: 4rem;
   }
