@@ -62,6 +62,17 @@
   }
 }
 
+@media screen and (max-width: 800px) {
+  .work-session-count {
+    top: 0.3rem;
+    left: 6rem;
+  }
+  .alarm-clock {
+    top: 0.3rem;
+    left: 24rem;
+  }
+}
+
 @keyframes flip-360 {
   0% {
     transform: rotate3d(0, 1, 0, 0deg);
