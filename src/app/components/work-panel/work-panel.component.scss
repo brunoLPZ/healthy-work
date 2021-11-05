@@ -89,6 +89,7 @@
     height: 40rem;
     left: 10%;
     bottom: calc(50% - 20rem);
+    transform: translate3d(0, 0, 200px);
   }
   &.disabled {
     pointer-events: none;
@@ -124,6 +125,21 @@
       &:nth-child(3) {
         margin-left: calc(100% - 8rem);
       }
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .video-frame {
+    &.maximized {
+      width: 65rem;
+      left: calc(50% - 32.5rem);
+    }
+  }
+  .video-controls {
+    &.maximized {
+      width: 63rem;
+      left: calc(50% - 32.5rem);
     }
   }
 }
