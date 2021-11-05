@@ -13,13 +13,11 @@
 }
 
 .alarm-clock {
-  background-color: rgba(0, 0, 0, 0.8);
   position: fixed;
-  width: 10rem;
-  height: 10rem;
-  top: calc(50% - 5rem);
-  left: calc(50% - 5rem);
-  box-shadow: 0 0 0 999em rgba(0, 0, 0, 0.8);
+  width: 4rem;
+  height: 4rem;
+  top: 6.2rem;
+  left: 19rem;
   display: none;
   &.show {
     display: block;
@@ -30,13 +28,16 @@
 
 @keyframes balance-clock {
   0% {
-    transform: scale(1);
+    transform: rotate3d(0, 1, 1, 0);
+  }
+  25% {
+    transform: rotate3d(0, 1, 1, -30deg);
   }
   50% {
-    transform: scale(1.1);
+    transform: rotate3d(0, 1, 1, 15deg);
   }
   100% {
-    transform: scale(1);
+    transform: rotate3d(0, 1, 1, 0deg);
   }
 }
 
