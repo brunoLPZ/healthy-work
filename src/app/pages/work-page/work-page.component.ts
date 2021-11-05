@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Task } from 'src/app/models/task';
+import { SessionService } from 'src/app/services/session.service';
 import { TasksService } from 'src/app/services/task.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class WorkPageComponent {
   completedSessions = 0;
   isSmallTimer: boolean = false;
   showClock: boolean = false;
+  sessionRestartFlip: boolean = false;
 
   @ViewChild('tasks', { read: ElementRef }) tasks?: ElementRef;
   @ViewChild('alarm', { read: ElementRef }) alarm?: ElementRef;
@@ -21,9 +23,13 @@ export class WorkPageComponent {
   taskList: Task[];
   activeTask?: Task;
 
-  constructor(taskService: TasksService) {
-    this.taskList = taskService.getTasks();
-    this.activeTask = taskService.getActiveTask();
+  constructor(
+    private taskService: TasksService,
+    private sessionService: SessionService
+  ) {
+    this.taskList = this.taskService.getTasks();
+    this.activeTask = this.taskService.getActiveTask();
+    this.completedSessions = this.sessionService.getSessionNumber();
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -46,6 +52,7 @@ export class WorkPageComponent {
     if (playAlarm) {
       if (this.mode === 'break') {
         this.completedSessions += 1;
+        this.sessionService.storeSession({ sessions: this.completedSessions });
       }
       this.showClock = true;
       setTimeout(() => (this.showClock = false), 4000);
@@ -57,5 +64,10 @@ export class WorkPageComponent {
     if (this.alarm) {
       this.alarm.nativeElement.play();
     }
+  }
+
+  restartSessions() {
+    this.sessionService.storeSession({ sessions: 0 });
+    this.completedSessions = 0;
   }
 }

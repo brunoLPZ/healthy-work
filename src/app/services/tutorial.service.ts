@@ -68,16 +68,15 @@ const TUTORIAL_WORK_STEPS: introJs.Step[] = [
     element: '.tutorial-start-stop-btn',
   },
   {
-    title: 'THE BACKGROUND VIDEO',
-    intro:
-      'Select a video to play as background while you work by changing the application settings. The video will be automatically played when the timer starts but you can pause it or play it manually if you want.',
-    element: '#tutorial-video',
-  },
-  {
     title: 'SKIP THE SESSION',
     intro:
       'You can skip a work session or a break if you feel that is too much.',
     element: '.tutorial-skip-btn',
+  },
+  {
+    title: 'YOUR COMPLETED SESSIONS',
+    intro: `Here you have your completed work sessions. Only completed sessions are taken into account, if you skip a work session the session count won't be increased. If you click on the refresh icon the sessions will start from 0 again.`,
+    element: '#tutorial-session-count',
   },
   {
     title: 'CREATE A TASK',
@@ -157,9 +156,6 @@ export class TutorialService {
         this.changeTaskLegendOpacity(true);
         this.tutorial.oncomplete(() => this.changeTaskLegendOpacity(false));
         this.tutorial.onexit(() => this.changeTaskLegendOpacity(false));
-      }
-      if (!document.getElementById('tutorial-video')) {
-        steps = steps.filter((step) => step.title !== 'THE BACKGROUND VIDEO');
       }
       this.tutorial.setOptions({
         tooltipClass: 'tutorial-tooltip',

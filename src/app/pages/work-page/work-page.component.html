@@ -9,7 +9,19 @@
   [smallTimer]="isSmallTimer"
   (changeMode)="nextMode($event)"
 ></app-break-panel>
-<div class="work-session-count">SESSIONS: {{ completedSessions }}</div>
+<div
+  class="work-session-count"
+  fxLayout="row"
+  fxLayoutAlign="center center"
+  (mouseenter)="sessionRestartFlip = true"
+  (mouseleave)="sessionRestartFlip = false"
+  id="tutorial-session-count"
+>
+  SESSIONS: {{ completedSessions }}
+  <mat-icon [class.flip]="sessionRestartFlip" (click)="restartSessions()"
+    >restart_alt</mat-icon
+  >
+</div>
 <div #tasks class="task-container">
   <app-task-list
     [tasks]="taskList"

@@ -49,4 +49,23 @@
   color: #f5f5f5;
   padding: 1rem 2rem;
   font-size: 2rem;
+  mat-icon {
+    margin-left: 1rem;
+    color: rgb(100, 92, 82);
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    &.flip {
+      cursor: pointer;
+      animation: flip-360 1s;
+    }
+  }
+}
+
+@keyframes flip-360 {
+  0% {
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 360deg);
+  }
 }
