@@ -64,12 +64,21 @@
 
 @media screen and (max-width: 800px) {
   .work-session-count {
-    top: 0.3rem;
-    left: 6rem;
+    top: 1.2rem;
+    left: 5rem;
+    padding: 0.2rem 1rem;
+    font-size: 1.6rem;
+    mat-icon {
+      height: 1.6rem;
+      width: 1.6rem;
+      font-size: 1.6rem;
+    }
   }
   .alarm-clock {
-    top: 0.3rem;
-    left: 24rem;
+    top: 0.8rem;
+    left: 18rem;
+    width: 3rem;
+    height: 3rem;
   }
 }
 
